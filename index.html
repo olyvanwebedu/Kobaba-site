@@ -453,6 +453,60 @@
     font-size:12.5px;color:var(--stone);
   }
 
+  /* ---------- ARTICLES ---------- */
+  .article-tabs{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:8px;}
+  .a-tab{
+    background:transparent;border:1px solid var(--line);color:var(--stone);
+    padding:11px 22px;border-radius:30px;
+    font-size:12.5px;text-transform:uppercase;letter-spacing:0.1em;font-weight:700;
+    cursor:pointer;transition:border-color .25s ease, color .25s ease, background .25s ease;
+  }
+  .a-tab:hover{border-color:var(--gold-2);color:var(--gold-2);}
+  .a-tab.active{background:var(--gold);border-color:var(--gold);color:var(--ink);}
+  .article-list{border-top:1px solid var(--line);margin-top:26px;}
+  .a-row{
+    display:flex;align-items:center;justify-content:space-between;gap:20px;
+    padding:28px 0;border-bottom:1px solid var(--line);
+    cursor:pointer;transition:padding-left .3s ease;
+  }
+  .a-row:hover{padding-left:14px;}
+  .a-row:hover h3{color:var(--gold-2);}
+  .a-row h3{font-size:21px;font-weight:600;transition:color .25s ease;}
+  .a-row p{color:var(--stone);font-size:13.5px;margin-top:6px;max-width:520px;}
+  .a-row .a-arrow{font-size:20px;color:var(--gold-2);flex-shrink:0;}
+  .a-empty{padding:40px 0;color:var(--stone);font-size:14.5px;}
+  .article-reader h2{font-size:clamp(24px,4vw,36px);margin-bottom:8px;color:var(--gold-2);}
+  .article-reader .a-meta{font-size:12px;text-transform:uppercase;letter-spacing:0.1em;color:var(--stone);font-weight:700;margin-bottom:26px;}
+  .article-reader .a-body{font-size:16px;line-height:1.75;color:rgba(244,238,225,0.9);max-width:640px;}
+  .article-reader .a-body p{margin-bottom:20px;}
+
+  /* ---------- LIGHTBOX ---------- */
+  .lightbox{
+    display:none;
+    position:fixed;inset:0;z-index:999;
+    background:rgba(11,10,8,0.96);
+    align-items:center;justify-content:center;
+    padding:40px;
+  }
+  .lightbox.open{display:flex;}
+  .lightbox-inner{max-width:900px;max-height:88vh;width:100%;display:flex;align-items:flex-start;justify-content:center;overflow-y:auto;padding:10px;}
+  .lightbox-inner img, .lightbox-inner video{
+    max-width:100%;max-height:88vh;
+    border:1px solid var(--line);
+    border-radius:2px;
+    margin:auto;
+  }
+  .lightbox-close{
+    position:absolute;top:22px;right:28px;
+    background:none;border:1px solid var(--line);color:var(--parchment);
+    width:42px;height:42px;border-radius:50%;
+    font-size:24px;line-height:1;cursor:pointer;
+    display:flex;align-items:center;justify-content:center;
+    transition:border-color .25s ease, color .25s ease;
+  }
+  .lightbox-close:hover{border-color:var(--gold-2);color:var(--gold-2);}
+  .reel{cursor:pointer;}
+
   /* ---------- REVEAL ANIMATION ---------- */
   .reveal{opacity:0;transform:translateY(26px);transition:opacity .8s ease, transform .8s cubic-bezier(.22,1,.36,1);}
   .reveal.in{opacity:1;transform:translateY(0);}
@@ -491,6 +545,7 @@
       <a href="#events">Events</a>
       <a href="#tickets">Tickets</a>
       <a href="#media">Media</a>
+      <a href="#articles">Articles</a>
       <a href="#bookings">Bookings</a>
     </nav>
     <a class="btn small" href="#bookings">Book KOBABA</a>
@@ -501,14 +556,12 @@
 <!-- ===================== HERO ===================== -->
 <section class="hero" id="top">
   <div class="hero-media">
-    <video id="heroVideo" autoplay muted loop playsinline poster="assets/img/portrait-suit.jpg">
-      <source src="assets/video/kobaba-reel-1.mp4" type="video/mp4">
-    </video>
+    <img src="assets/img/portrait-suit.jpg" alt="KOBABA Jornsen">
   </div>
   <div class="wrap hero-content">
     <div class="hero-loc">Est. Port Harcourt · Nigeria</div>
     <h1>KOBABA<br><em>Jornsen</em></h1>
-    <p class="hero-tag">Comedian · Community Builder · CEO, Talkaholic Unlimited · Mayor of Pitakwa</p>
+    <p class="hero-tag">Comedian · Compere · Conference Speaker · Consultant · Community Builder · Creator · CEO, Talkaholic Unlimited</p>
     <p class="hero-quote">"Building people, brands and communities through laughter, leadership and impact."</p>
     <div class="hero-ctas">
       <a class="btn" href="#bookings">Book KOBABA</a>
@@ -743,17 +796,22 @@
       <a class="btn ghost small" href="#media">All videos</a>
     </div>
     <div class="reel-grid">
-      <div class="reel reveal"><img src="assets/img/stage-agbada.jpg" alt="Reel 01"><span class="play">&#9658;</span><span class="rlabel">Reel 01</span></div>
-      <div class="reel reveal"><img src="assets/img/mayor-pitakwa.jpg" alt="Reel 02"><span class="play">&#9658;</span><span class="rlabel">Reel 02</span></div>
-      <div class="reel reveal"><img src="assets/img/portrait-cream.jpg" alt="Reel 03"><span class="play">&#9658;</span><span class="rlabel">Reel 03</span></div>
-      <div class="reel reveal"><img src="assets/img/stage-mic.jpg" alt="Reel 04"><span class="play">&#9658;</span><span class="rlabel">Reel 04</span></div>
-      <div class="reel reveal"><img src="assets/img/portrait-brown.jpg" alt="Reel 05"><span class="play">&#9658;</span><span class="rlabel">Reel 05</span></div>
-      <div class="reel reveal"><img src="assets/img/portrait-suit.jpg" alt="Reel 06"><span class="play">&#9658;</span><span class="rlabel">Reel 06</span></div>
-      <div class="reel reveal"><img src="assets/img/stage-agbada-blue.jpg" alt="Reel 07"><span class="play">&#9658;</span><span class="rlabel">Reel 07</span></div>
-      <div class="reel reveal"><img src="assets/img/mayor-pitakwa.jpg" alt="Reel 08"><span class="play">&#9658;</span><span class="rlabel">Reel 08</span></div>
+      <div class="reel reveal" data-type="video" data-src="assets/video/kobaba-reel-1.mp4"><img src="assets/img/stage-agbada.jpg" alt="Reel 01"><span class="play">&#9658;</span><span class="rlabel">Reel 01</span></div>
+      <div class="reel reveal" data-type="image" data-src="assets/img/mayor-pitakwa.jpg"><img src="assets/img/mayor-pitakwa.jpg" alt="Reel 02"><span class="play">&#9658;</span><span class="rlabel">Reel 02</span></div>
+      <div class="reel reveal" data-type="image" data-src="assets/img/portrait-cream.jpg"><img src="assets/img/portrait-cream.jpg" alt="Reel 03"><span class="play">&#9658;</span><span class="rlabel">Reel 03</span></div>
+      <div class="reel reveal" data-type="video" data-src="assets/video/kobaba-reel-2.mp4"><img src="assets/img/stage-mic.jpg" alt="Reel 04"><span class="play">&#9658;</span><span class="rlabel">Reel 04</span></div>
+      <div class="reel reveal" data-type="image" data-src="assets/img/portrait-brown.jpg"><img src="assets/img/portrait-brown.jpg" alt="Reel 05"><span class="play">&#9658;</span><span class="rlabel">Reel 05</span></div>
+      <div class="reel reveal" data-type="image" data-src="assets/img/portrait-suit.jpg"><img src="assets/img/portrait-suit.jpg" alt="Reel 06"><span class="play">&#9658;</span><span class="rlabel">Reel 06</span></div>
+      <div class="reel reveal" data-type="image" data-src="assets/img/stage-agbada-blue.jpg"><img src="assets/img/stage-agbada-blue.jpg" alt="Reel 07"><span class="play">&#9658;</span><span class="rlabel">Reel 07</span></div>
+      <div class="reel reveal" data-type="image" data-src="assets/img/mayor-pitakwa.jpg"><img src="assets/img/mayor-pitakwa.jpg" alt="Reel 08"><span class="play">&#9658;</span><span class="rlabel">Reel 08</span></div>
     </div>
   </div>
 </section>
+
+<div class="lightbox" id="lightbox">
+  <button class="lightbox-close" id="lightboxClose" aria-label="Close">&times;</button>
+  <div class="lightbox-inner" id="lightboxInner"></div>
+</div>
 
 <!-- ===================== VOICES ===================== -->
 <section class="voices">
@@ -784,6 +842,25 @@
   </div>
 </section>
 
+<!-- ===================== ARTICLES ===================== -->
+<section id="articles">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow">From KOBABA</span>
+      <h2>Articles &amp; Insights.</h2>
+      <p>Thoughts on business, mindset and building something that lasts — sorted by what you're here for.</p>
+    </div>
+
+    <div class="article-tabs reveal">
+      <button class="a-tab active" data-cat="business">Business</button>
+      <button class="a-tab" data-cat="motivational">Motivational</button>
+      <button class="a-tab" data-cat="talent">Talent</button>
+    </div>
+
+    <div class="article-list reveal" id="articleList"></div>
+  </div>
+</section>
+
 <!-- ===================== BOOKINGS ===================== -->
 <section id="bookings">
   <div class="wrap booking-grid">
@@ -801,15 +878,17 @@
         <div class="btype"><span>MC Services</span><span class="n">07</span></div>
       </div>
     </div>
-    <form class="booking reveal" onsubmit="event.preventDefault(); this.querySelector('.btn').textContent='Request sent ✓';">
+    <form class="booking reveal" data-ajax-form action="https://formsubmit.co/ajax/bookings@kobaba.com" method="POST">
+      <input type="hidden" name="_subject" value="New Booking Request — KOBABA site">
+      <input type="hidden" name="_captcha" value="false">
       <div class="form-row">
-        <div class="field"><label for="fname">Full name</label><input id="fname" type="text" required></div>
-        <div class="field"><label for="femail">Email</label><input id="femail" type="email" required></div>
+        <div class="field"><label for="fname">Full name</label><input id="fname" name="Full name" type="text" required></div>
+        <div class="field"><label for="femail">Email</label><input id="femail" name="Email" type="email" required></div>
       </div>
       <div class="form-row">
         <div class="field">
           <label for="ftype">Event type</label>
-          <select id="ftype">
+          <select id="ftype" name="Event type">
             <option>Comedy Shows</option>
             <option>Corporate Events</option>
             <option>Conferences</option>
@@ -819,9 +898,9 @@
             <option>MC Services</option>
           </select>
         </div>
-        <div class="field"><label for="fdate">Event date</label><input id="fdate" type="date"></div>
+        <div class="field"><label for="fdate">Event date</label><input id="fdate" name="Event date" type="date"></div>
       </div>
-      <div class="field"><label for="fmsg">Message</label><textarea id="fmsg" rows="4"></textarea></div>
+      <div class="field"><label for="fmsg">Message</label><textarea id="fmsg" name="Message" rows="4"></textarea></div>
       <button class="btn" type="submit">Send booking request</button>
     </form>
   </div>
@@ -832,8 +911,10 @@
   <div class="wrap">
     <span class="eyebrow" style="color:var(--ink);opacity:0.65;">Join the Trybe</span>
     <h3>Be first for tours, drops and movements.</h3>
-    <form class="newsletter-form" onsubmit="event.preventDefault(); this.querySelector('button').textContent='Subscribed ✓';">
-      <input type="email" placeholder="Your email address" required>
+    <form class="newsletter-form" data-ajax-form action="https://formsubmit.co/ajax/bookings@kobaba.com" method="POST">
+      <input type="hidden" name="_subject" value="New Newsletter Signup — KOBABA site">
+      <input type="hidden" name="_captcha" value="false">
+      <input type="email" name="Email" placeholder="Your email address" required>
       <button type="submit">Subscribe</button>
     </form>
   </div>
@@ -855,13 +936,14 @@
           <li><a href="#events">Events</a></li>
           <li><a href="#tickets">Tickets</a></li>
           <li><a href="#media">Media</a></li>
+          <li><a href="#articles">Articles</a></li>
           <li><a href="#bookings">Bookings</a></li>
         </ul>
       </div>
       <div class="foot-col">
         <h4>Contact</h4>
         <ul>
-          <li><a href="mailto:bookings@kobaba.co">bookings@kobaba.co</a></li>
+          <li><a href="mailto:bookings@kobaba.com">bookings@kobaba.com</a></li>
           <li>Port Harcourt, Nigeria</li>
           <li><a href="#" target="_blank" rel="noopener">@kobabajornsen</a></li>
         </ul>
@@ -875,6 +957,143 @@
 </footer>
 
 <script>
+  // Real form submission via FormSubmit (AJAX — stays on page)
+  document.querySelectorAll('form[data-ajax-form]').forEach(form => {
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const btn = form.querySelector('button');
+      const original = btn.textContent;
+      btn.textContent = 'Sending...';
+      btn.disabled = true;
+      try {
+        const res = await fetch(form.action, {
+          method: 'POST',
+          headers: { 'Accept': 'application/json' },
+          body: new FormData(form)
+        });
+        if (res.ok) {
+          btn.textContent = 'Sent ✓';
+          form.reset();
+        } else {
+          btn.textContent = 'Error — try again';
+        }
+      } catch (err) {
+        btn.textContent = 'Error — try again';
+      }
+      setTimeout(() => { btn.textContent = original; btn.disabled = false; }, 4000);
+    });
+  });
+
+  // ---- Articles ----
+  // To add a real article: copy one of the objects below inside its category
+  // array and fill in title/date/body. Each string in "body" becomes its own
+  // paragraph in the reader view.
+  const ARTICLES = {
+    business: [
+      {
+        title: "Sample: Building Talkaholic Unlimited from the ground up",
+        date: "Business",
+        body: [
+          "This is placeholder text — replace it with your real article content.",
+          "Add as many paragraphs as you like here; each one in this list becomes its own paragraph when someone opens the article."
+        ]
+      }
+    ],
+    motivational: [
+      {
+        title: "Sample: Why laughter is a form of leadership",
+        date: "Motivational",
+        body: [
+          "This is placeholder text — replace it with your real article content.",
+          "Swap this out for your own words whenever you're ready to publish."
+        ]
+      }
+    ],
+    talent: [
+      {
+        title: "Sample: Spotting talent before the world does",
+        date: "Talent",
+        body: [
+          "This is placeholder text — replace it with your real article content.",
+          "This category is meant for pieces about discovering and developing new talent."
+        ]
+      }
+    ]
+  };
+
+  const articleListEl = document.getElementById('articleList');
+  const articleTabs = document.querySelectorAll('.a-tab');
+
+  function renderArticles(cat){
+    const items = ARTICLES[cat] || [];
+    articleListEl.innerHTML = '';
+    if (items.length === 0){
+      articleListEl.innerHTML = '<div class="a-empty">No articles in this category yet — check back soon.</div>';
+      return;
+    }
+    items.forEach(article => {
+      const row = document.createElement('div');
+      row.className = 'a-row';
+      row.innerHTML = `<div><h3>${article.title}</h3><p>${article.date}</p></div><span class="a-arrow">→</span>`;
+      row.addEventListener('click', () => openArticle(article));
+      articleListEl.appendChild(row);
+    });
+  }
+
+  function openArticle(article){
+    lightboxInner.innerHTML = '';
+    const reader = document.createElement('div');
+    reader.className = 'article-reader';
+    reader.innerHTML = `
+      <div class="a-meta">${article.date}</div>
+      <h2>${article.title}</h2>
+      <div class="a-body">${article.body.map(p => `<p>${p}</p>`).join('')}</div>
+    `;
+    lightboxInner.appendChild(reader);
+    lightbox.classList.add('open');
+  }
+
+  articleTabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      articleTabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      renderArticles(tab.dataset.cat);
+    });
+  });
+
+  renderArticles('business');
+
+  // Lightbox for media reels
+  const lightbox = document.getElementById('lightbox');
+  const lightboxInner = document.getElementById('lightboxInner');
+  const lightboxClose = document.getElementById('lightboxClose');
+
+  document.querySelectorAll('.reel').forEach(reel => {
+    reel.addEventListener('click', () => {
+      const type = reel.dataset.type;
+      const src = reel.dataset.src;
+      lightboxInner.innerHTML = '';
+      if (type === 'video') {
+        const v = document.createElement('video');
+        v.src = src; v.controls = true; v.autoplay = true; v.playsInline = true;
+        lightboxInner.appendChild(v);
+      } else {
+        const img = document.createElement('img');
+        img.src = src; img.alt = '';
+        lightboxInner.appendChild(img);
+      }
+      lightbox.classList.add('open');
+    });
+  });
+
+  function closeLightbox(){
+    lightbox.classList.remove('open');
+    lightboxInner.innerHTML = '';
+  }
+  lightboxClose.addEventListener('click', closeLightbox);
+  lightbox.addEventListener('click', (e) => { if (e.target === lightbox) closeLightbox(); });
+  document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeLightbox(); });
+
   // Video fallback: if a video file is missing/fails, show its poster image instead of a black box
   document.querySelectorAll('video[poster]').forEach(v => {
     v.addEventListener('error', showPoster, true);
